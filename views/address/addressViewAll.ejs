@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Address's</title>
+    </head>
+    <body>
+        <h1>Address's</h1>
+        <table border="1">
+            <tr><th>Address ID</th><th>address_name</th></tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <tr>
+
+                <td><a href="/address/?address_id=<%= result[i].address_id %>"><%= result[i].address_id %></a></td>
+                <td><%= result[i].street %></td>
+                <td><%= result[i].address_id %></td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+
+</html>

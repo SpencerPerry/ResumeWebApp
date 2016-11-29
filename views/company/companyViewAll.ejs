@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Companies</title>
+    </head>
+    <body>
+        <h1>Companies</h1>
+        <table border="1">
+            <tr><th>Company ID</th><th>company_name</th></tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+            <tr>
+                <td><%= result[i].company_id %></td>
+                <td><a href="/company/?company_id=<%= result[i].company_id %>"><%= result[i].company_name %></a></td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+
+</html>
