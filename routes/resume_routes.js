@@ -71,5 +71,24 @@ router.get('/insert', function(req, res){
 });
 
 
+// Delete a resume for the given resume_id
+router.get('/delete', function(req, res){
+    if(req.query.resume_id == null) {
+        res.send('resume_id is null');
+    }
+    else {
+        resume_dal.delete(req.query.resume_id, function(err, result){
+            if(err) {
+                res.send(err);
+            }
+            else {
+                //poor practice, but we will handle it differently once we start using Ajax
+                res.redirect(302, '/resume/all');
+            }
+        });
+    }
+});
+
+
 
 module.exports = router;

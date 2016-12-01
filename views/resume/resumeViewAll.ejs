@@ -9,11 +9,16 @@
 <br />
 
     <table border="1">
-        <tr><th>Resume</th><th>Name</th></tr>
-            <% for(var i=0; result.length > i; i++ ) { %>
+        <tr><th>Resume</th><th>Name</th><th>Action</th></tr>
+        <% for(var i=0; result.length > i; i++ ) { %>
             <tr>
                 <td><a href="/resume/?resume_id=<%= result[i].resume_id %>"><%= result[i].resume_name %></a></td>
                 <td><a href="/account/?account_id=<%= result[i].account_id %>"><%= result[i].first_name + ' ' + result[i].last_name %></a></td>
+                <td><form action="/resume/delete/">
+                        <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].resume_id %>" />
+                        <input type="submit" value="Delete"/>
+                    </form>
+                </td>
             </tr>
             <% } %>
     </table>

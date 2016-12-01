@@ -33,5 +33,24 @@ router.get('/', function(req, res){
     }
 });
 
+// Delete a company for the given account_id
+router.get('/delete', function(req, res){
+    if(req.query.company_id == null) {
+        res.send('company_id is null');
+    }
+    else {
+        company_dal.delete(req.query.company_id, function(err, result){
+            if(err) {
+                res.send(err);
+            }
+            else {
+                //poor practice, but we will handle it differently once we start using Ajax
+                res.redirect(302, '/company/all');
+            }
+        });
+    }
+});
+
+
 module.exports = router;
 
