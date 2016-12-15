@@ -7,7 +7,7 @@
         <a href="/skill/add">Add New Skill</a> <br />
         <br />
         <table border="1">
-            <tr><th>Name</th><th>Description</th></tr>
+            <tr><th>Name</th><th>Description</th><th>Action</th></tr>
             <% for(var i=0; result.length > i; i++ ) { %>
             <tr>
                 <td><a href="/skill/?skill_id=<%= result[i].skill_id %>"><%= result[i].name %></a></td>

@@ -1,15 +1,21 @@
-<%- include("../includes/header.ejs", {title:"Add New Resume"}); %>
+<%- include("../includes/header.ejs", {title: "Update " + resume.resume_name}); %>
 
-<h1>Add New Resume</h1>
-<form action="/resume/insert" method="get">
-    Resume Name: <input id="resume_name" name="resume_name" type="text" />
+<h1>Update <%= resume.resume_name%></h1>
+<form action="/resume/update" method="get">
+    <input type="hidden" id="resume_id" name="resume_id" value="<%= resume.resume_id %>">
+    Resume Name: <input id="resume_name" name="resume_name" type="text" value="<%= resume.resume_name%>"/>
     <br />
     <br />
     Account
     <br />
     <select id="account_id" name="account_id" type="text">
-        <% for(var i=0; account.length > i; i++ ) { %>
-        <option value="<%= account[i].account_id %>"><%= account[i].first_name %></option>
+        <% for(var i=0; account.length > i; i++ ) {
+            var selected = "";
+            if(account[i].account_id != null) {
+                selected = "selected";
+            }
+        %>
+        <option value="<%= account[i].account_id %>" <%= selected %> ><%= account[i].first_name%></option>
         <% } %>
     </select>
     <br />
@@ -39,8 +45,7 @@
         <option value="<%= school[i].school_id %>"><%= school[i].school_name %></option>
         <% } %>
     </select>
-
-
+    <br />
     <!-- Initialize the multiselect plugin: -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -59,7 +64,7 @@
     </script>
 
     <br />
-    <br />
+
     <input type="submit" />
 
 </form>

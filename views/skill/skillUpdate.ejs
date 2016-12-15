@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Update <%= skill.name%></title>
+</head>
+<body>
+<h1>Update <%= skill.name%></h1>
+<form action="/skill/update" method="get">
+    <input type="hidden" id="skill_id" name="skill_id" value="<%= skill.skill_id %>">
+    Skill Name: <input id="name" name="name" type="text" value="<%= skill.name%>"/>
+    <br />
+    <br />
+    Description
+    <select id="skill_id" name="skill_id">
+        <% for(var i=0; skill.length > i; i++ ) {
+            var selected = "";
+            if(skill[i].skill_id == skill.skill_id) {
+                selected = "selected";
+            }
+        %>
+        <option value="<%= skill[i].skill_id %>" <%= selected %>><%= skill[i].description %></option>
+        <% } %>
+    </select>
+
+    <br />
+
+    <input type="submit" />
+
+</form>
+</body>
+
+</html>
